@@ -30,6 +30,11 @@ public class Product {
     @Column(name = "description")
     private String description;
 
+    @NotNull(message="this field is required")
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
+
     @Column(name = "image")
     private String image;
 
@@ -44,11 +49,12 @@ public class Product {
 
     }
 
-    public Product(String name, float price, int remainingQuantity, String description) {
+    public Product(String name, float price, int remainingQuantity, String description, Category category) {
         this.name = name;
         this.price = price;
         this.remainingQuantity = remainingQuantity;
         this.description = description;
+        this.category = category;
     }
 
     public int getId() {
@@ -91,6 +97,14 @@ public class Product {
         this.description = description;
     }
 
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
     public String getImage() {
         return image;
     }
@@ -107,6 +121,7 @@ public class Product {
                 ", price=" + price +
                 ", remainingQuantity=" + remainingQuantity +
                 ", description='" + description + '\'' +
+//                ", category=" + category +
                 '}';
     }
 }
