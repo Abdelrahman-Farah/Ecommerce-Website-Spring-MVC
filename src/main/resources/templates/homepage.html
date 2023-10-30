@@ -10,6 +10,8 @@
 
 <body>
 
+<h2 th:text="${userName}"></h2>
+
 <h3>All Products</h3>
 <hr>
 
@@ -41,6 +43,11 @@
         <td th:text="${product.remainingQuantity}" />
         <td th:text="${product.description}" />
         <td>
+            <form action="#" th:action="@{/cart/add-item}" method="POST">
+                <input hidden name="productId" th:value="${product.id}" />
+                <input type="number" name="quantity" />
+                <button type="submit">Add to Cart</button>
+            </form>
             <a th:href="@{/products/{productId}/edit(productId=${product.id})}"
                class="btn btn-warning mt-3"
                role="button"

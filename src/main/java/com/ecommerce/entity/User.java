@@ -12,7 +12,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long id;
+    private int id;
 
     @NotNull(message="this field is required")
     @Size(min=1, message="this field is required")
@@ -36,6 +36,10 @@ public class User {
     @Column(name = "enabled")
     private short enabled = 1;
 
+    @OneToOne(mappedBy = "owner")
+    private Cart cart;
+
+
     public User() {
     }
 
@@ -47,11 +51,11 @@ public class User {
         this.enabled = enabled;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -93,6 +97,14 @@ public class User {
 
     public void setEnabled(short enabled) {
         this.enabled = enabled;
+    }
+
+    public Cart getCart() {
+        return cart;
+    }
+
+    public void setCart(Cart cart) {
+        this.cart = cart;
     }
 
     @Override

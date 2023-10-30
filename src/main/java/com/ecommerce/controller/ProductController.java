@@ -70,6 +70,8 @@ public class ProductController {
     @PostMapping("/delete")
     public String deleteProduct(@RequestParam("productId") int productId)
     {
+        // TODO: handle exception if the product is not found
+        // TODO: enter string in PathVariable("productId")
         productService.deleteById(productId);
         return "redirect:/";
     }
