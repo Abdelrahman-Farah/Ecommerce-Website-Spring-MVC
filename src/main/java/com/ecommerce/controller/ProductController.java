@@ -25,6 +25,15 @@ public class ProductController {
         this.productService = productService;
     }
 
+    @GetMapping("/{productId}")
+    public String getProductDetails(@PathVariable("productId") int productId, Model theModel)
+    {
+        // TODO: handle exception if the product is not found
+        // TODO: enter string in PathVariable("productId")
+        Product theProduct = productService.findById(productId);
+        theModel.addAttribute("product", theProduct);
+        return "product/product-details";
+    }
 
     @GetMapping("/add")
     public String newProductForm(Model theModel)
