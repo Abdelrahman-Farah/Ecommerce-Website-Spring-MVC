@@ -1,0 +1,137 @@
+body{
+    background-color: #f2f2f2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+h1 {
+    text-align: center;
+    margin: 2em 0;
+}
+
+.cart-items-container{
+    display: flex;
+    justify-content: center;
+}
+
+.cart-items-container .limiter {
+    width: 1300px;
+    background-color: white;
+    padding: 3em 4em;
+    margin-bottom: 12em;
+    margin: 2em 6em 12em 6em;
+}
+
+.count-heading{
+    font-size: 36px;
+    display: flex;
+    justify-content: space-between;
+}
+
+th{
+    color: #617373;
+}
+
+.my-hr{
+    border-bottom: 1px solid #000;
+    margin-bottom: 4em;
+    margin-top: 1.3em;
+}
+
+
+tr.spaceUnder>td {
+    padding-top: 2.5em;
+    padding-bottom: 2.5em;
+    /*border-bottom: 1px solid #000;*/
+}
+
+.product-details {
+    display: flex;
+}
+
+.item-image {
+    height: 150px;
+    width: 150px;
+    margin-right: 2em;
+    /*margin-bottom: 30em;*/
+}
+
+.item-meta-data {
+    max-width: 5em;
+    margin-right: 1.8em;
+}
+
+
+.item-meta-data {
+    max-width: 25em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.item-name {
+    text-decoration: none;
+    font-size: 24px;
+    max-width: 80%;
+}
+
+.remove-item-button{
+    border: none;
+    background-color: inherit;
+    text-decoration: none;
+    margin-bottom: 1em;
+    font-size: 18px;
+    color: #617373;
+}
+
+.counter{
+    margin-right: 5.5em;
+    display: flex;
+    /*justify-content: space-between;*/
+}
+
+.increment-btn, .decrement-btn {
+    font-size: 32px;
+}
+
+.increment-btn:hover, .decrement-btn:hover {
+    cursor: pointer;
+}
+
+.quantity-counter{
+    width: 80px;
+    display: inline;
+    /*width: 25%;*/
+    border-radius: 8px;
+    border: 2px solid #02282c;
+    margin: 0 2em;
+    text-align: center;
+    padding-left: 1em;
+}
+
+
+.item-price{
+    margin-right: 4em;
+}
+
+.price, .total, .word-usd{
+    color: #383838;
+}
+
+.price{
+    font-weight: bold;
+    font-size: 18px;
+    margin-right: 3px;
+}
+
+.total{
+    font-weight: bold;
+    font-size: 19px;
+    margin-right: 3px;
+}
+
+.word-usd{
+    font-weight: bold;
+    font-size: 19px;
+}

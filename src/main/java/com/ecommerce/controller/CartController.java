@@ -35,6 +35,8 @@ public class CartController {
         Cart cart = user.getCart();
 
         theModel.addAttribute("cart", cart);
+        theModel.addAttribute("itemsCount", cart.getCartItems().size());
+
         return "cart/show-cart";
     }
 
