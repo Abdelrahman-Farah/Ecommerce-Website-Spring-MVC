@@ -24,7 +24,7 @@
 4. Configure the database connection in `application.properties` file (check the [Database](#database) section below for more info)
 5. Run the project (by running the `main` method in `ECommerceApplication.java`)
 6. Open http://localhost:8080/ in your browser!
-   * If you ran the [`User and Roles.sql`](https://github.com/Abdelrahman-Farah/ecommerce/blob/main/PSQL-Scripts/User%20and%20Roles.txt)script on the database, you can log in with the following credentials as admin; otherwise you'll have to manually create an  user in the database:
+   * If you ran the [`users-roles.sql`](https://github.com/Abdelrahman-Farah/ecommerce/blob/main/PSQL-Scripts/users-roles.txt)script on the database, you can log in with the following credentials as admin; otherwise you'll have to manually create an  user in the database:
      * Email: `admin@ecommerce.com`
      * Password: `pass123word`
     * Or you can [register a new user!](http://localhost:8080/auth/register)
