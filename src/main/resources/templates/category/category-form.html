@@ -4,35 +4,83 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <!--    <link rel="stylesheet" type="text/css" th:href="@{/css/auth/login.css}">-->
+    <link href='https://fonts.googleapis.com/css?family=Alexandria:100,200,300,400,500,600,700,800,900' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/navbar.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/category/add-new.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/footer.css}">
+
+    <style>
+        body {
+            font-family: 'Alexandria',serif;
+            font-weight: 400;
+        }
+    </style>
 </head>
 
 <body>
-<h3>Categories</h3>
-<hr>
 
-<form action="#"
-      th:action="@{/categories/save}"
-      method="POST"
-      enctype="multipart/form-data"
-      th:object="${category}">
+<div th:replace="fragments/navbar"></div>
 
-    <h1 class="mb-4">Add New Category</h1>
-
-    <div th:if="${#fields.hasErrors('name')}"
-         th:errors="*{name}"
-         class="error"
-    ></div>
+<div class="main">
+    <div class="limiter">
+        <form action="#"
+              th:action="@{/categories/save}"
+              method="POST"
+              enctype="multipart/form-data"
+              th:object="${category}">
 
 
-    <input hidden th:field="*{id}"/>
-    <input type="text" th:field="*{name}" placeholder="Product Name"/>
+            <h1 class="mb-4">Category Form</h1>
 
-    <input type="submit" value="Save Product"/>
-</form>
+            <div class="img-container">
+                <div class="avatar-upload">
+<!--                    <div class="avatar-edit">-->
+<!--                        <label for="imageUpload">aa</label>-->
+<!--                    </div>-->
+                    <div class="avatar-preview">
 
+                        <div th:if="${form_status == 'NEW'}"
+                             class="imagePreview"
+                             th:style="'background-image:url(' + @{'/system-images/categories/default.png'} + ');'">
+                        </div>
+
+                        <div th:if="${form_status == 'UPDATE'}"
+                             class="imagePreview"
+                             th:style="'background-image:url(' + @{${category.photosImagePath}} + ');'">
+                        </div>
+
+                    </div>
+
+
+                </div>
+                <div class="mb-5">
+                    <input required class="form-control" type="file" name="file" id="imageUpload" accept=".png, .jpg, .jpeg">
+                </div>
+            </div>
+
+
+            <div th:if="${#fields.hasErrors('name')}"
+                 th:errors="*{name}"
+                 class="error"
+            ></div>
+
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default">Category Name</span>
+                <input type="text" class="form-control" th:field="*{name}">
+            </div>
+
+            <input hidden th:field="*{id}"/>
+
+            <button type="submit" class="create-category-button">Submit Category Form</button>
+        </form>
+    </div>
+</div>
+
+<div th:replace="fragments/footer"></div>
+
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script type="text/javascript" th:src="@{/js/form_image_preview.js}"></script>
 </body>
 
 </html>

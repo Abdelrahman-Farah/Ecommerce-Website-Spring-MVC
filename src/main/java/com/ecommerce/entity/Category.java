@@ -16,13 +16,27 @@ public class Category {
     private int id;
 
     @NotNull(message="this field is required")
-    @Size(min=3, message="product name must be at least 3 letters")
+    @Size(min=3, message="Category name must be at least 3 letters")
     @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
+    @Column(name = "image")
+    private String image;
+
+    @OneToMany(
+            mappedBy = "category",
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL
+    )
     private List<Product> products;
 
+
+    @Transient
+    public String getPhotosImagePath() {
+        if (image == null) return null;
+
+        return "/system-images/categories/" + image;
+    }
 
     public Category() {
     }
@@ -45,6 +59,14 @@ public class Category {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public List<Product> getProducts() {

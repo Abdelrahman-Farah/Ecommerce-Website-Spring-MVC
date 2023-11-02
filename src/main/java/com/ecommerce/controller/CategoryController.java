@@ -39,10 +39,9 @@ public class CategoryController {
         // TODO: handle exception if the category is not found
         // TODO: enter string in PathVariable("categoryId")
         Category category = categoryService.findById(categoryId);
-        System.out.println(category.getId());
-        System.out.println(category.getName());
-        System.out.println(category.getProducts());
+
         theModel.addAttribute("category", category);
+
         return "category/category-details";
     }
 
@@ -50,6 +49,7 @@ public class CategoryController {
     public String newCategoryForm(Model theModel)
     {
         theModel.addAttribute("category", new Category());
+        theModel.addAttribute("form_status", "NEW");
         return "category/category-form";
     }
 
@@ -60,19 +60,29 @@ public class CategoryController {
         // TODO: enter string in PathVariable("categoryId")
         Category category = categoryService.findById(categoryId);
         theModel.addAttribute("category", category);
+        theModel.addAttribute("form_status", "UPDATE");
         return "category/category-form";
     }
 
     @PostMapping("/save")
     public String processCategoryForm(
             @Valid @ModelAttribute("category") Category theCategory,
-            BindingResult theBindingResult
-    ) {
+            BindingResult theBindingResult,
+            @RequestParam("file") MultipartFile multipartFile,
+            Model theModel
+    ) throws IOException {
         if (theBindingResult.hasErrors()) {
             return "category/category-form";
         }
 
-        categoryService.save(theCategory);
+        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+        theCategory.setImage(fileName);
+
+        Category savedCategory = categoryService.save(theCategory);
+
+        String uploadDir = "system-images/categories";
+
+        FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
 
         return "redirect:/categories/";
     }

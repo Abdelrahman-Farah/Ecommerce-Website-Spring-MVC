@@ -4,43 +4,81 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link href='https://fonts.googleapis.com/css?family=Alexandria:100,200,300,400,500,600,700,800,900' rel='stylesheet'>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <!--    <link rel="stylesheet" type="text/css" th:href="@{/css/auth/login.css}">-->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/navbar.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/category/details.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/footer.css}">
+
+    <style>
+        body {
+            font-family: 'Alexandria',serif;
+            font-weight: 400;
+        }
+    </style>
 </head>
 
 <body>
-<h3>Categories</h3>
-<hr>
 
-    <div th:object="${category}">
-        <div th:text="*{id}"></div>
-        <div th:text="*{name}"></div>
+<div th:replace="fragments/navbar"></div>
 
-        <table class="table table-bordered table-striped">
-            <thead class="table-dark">
-            <tr>
-                <th>ID</th>
-                <th>Product Name</th>
-                <th>Product Price</th>
-                <th>Product Remaining Quantity</th>
-                <th>Product Description</th>
-            </tr>
-            </thead>
+<div class="main">
+    <div class="limiter">
+        <div th:object="${category}" class="category">
+            <div class="heading-container">
+                <span th:text="*{name}" class="category-heading"></span>
+                <span class="category-heading">Category</span>
 
-            <tbody>
-            <tr th:each="product : *{products}">
+                <span class="actions">
+                    <a th:href="@{/categories/{categoryId}/edit(categoryId=${category.id})}"
+                       class="btn btn-primary"
+                       role="button"
+                       aria-pressed="true">Edit</a>
 
-                <td th:text="${product.id}" />
-                <td th:text="${product.name}" />
-                <td th:text="${product.price}" />
-                <td th:text="${product.remainingQuantity}" />
-                <td th:text="${product.description}" />
+                    <form action="#" th:action="@{/categories/delete}" method="POST">
+                        <input hidden name="categoryId" th:value="${category.id}" />
+                        <button type="submit" class="btn btn-danger btn-sm"
+                                onclick="if (!(confirm('Are you sure you want to delete this category?'))) return false">
+                            Delete
+                        </button>
+                    </form>
 
-            </tr>
-            </tbody>
-        </table>
+                </span>
+            </div>
+
+            <div class="category-image-wrapper">
+                <img th:src="@{${category.photosImagePath}}" class="category-image"  alt="category image"/>
+            </div>
+
+
+
+
+            <div class="products-container">
+                <div th:each="product : ${category.products}" class="product-card">
+                    <div class="product-image-wrapper">
+                        <img th:src="@{${product.photosImagePath}}" class="product-image"  alt="product image"/>
+                    </div>
+
+                    <div class="product-meta-data">
+                        <div th:text="${product.name}" class="product-name"></div>
+
+                        <div class="product-price">
+                            <span class="word-price">Price:</span>
+                            <span th:text="${product.price}"></span>
+                            <span class="word-usd">$</span>
+                        </div>
+                    </div>
+
+                    <a th:href="@{/products/{productId}(productId=${product.id})}" class="view-details-button">
+                        View Details
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
+</div>
 
+<div th:replace="fragments/footer"></div>
 </body>
 
 </html>
