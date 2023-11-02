@@ -2,8 +2,60 @@ body{
     background-color: #f2f2f2;
 }
 
+.main{
+    display: flex;
+    justify-content: center;
+}
+
+.main .limiter{
+    max-width: 1300px;
+    text-align: center;
+    margin: 5em;
+}
+
+.auto{
+    height: 20em;
+    margin: 2em 3em 5.5em 3em;
+}
+
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    /*background: #fff;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-slide a{
+    color: #02282c;
+    margin-left: 3em;
+    text-decoration: none;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.category-image-wrapper img{
+    height: 230px;
+    width: 270px;
+    border-radius: 12px;
+    border: 3px solid #02282c;
+    margin: 0 2em 1em 2em;
+}
+
 .products-container{
     display: flex;
+    /*flex-direction: column;*/
     justify-content: space-evenly;
     flex-wrap: wrap;
 }

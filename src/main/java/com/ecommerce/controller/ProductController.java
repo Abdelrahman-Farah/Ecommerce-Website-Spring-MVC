@@ -68,7 +68,7 @@ public class ProductController {
 
         Product savedProduct = productService.save(theProduct);
 
-        String uploadDir = "user-photos/" + savedProduct.getId();
+        String uploadDir = "system-images/products";
 
         FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
         productService.save(theProduct);

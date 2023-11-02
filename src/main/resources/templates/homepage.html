@@ -9,10 +9,18 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/navbar.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/css/homepage/products.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/css/footer.css}">
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+
     <style>
         body {
             font-family: 'Alexandria',serif;
             font-weight: 400;
+        }
+        .swiper-wrapper {
+            transition-timing-function: linear;
         }
     </style>
 </head>
@@ -22,29 +30,82 @@
 
     <div th:replace="fragments/navbar"></div>
 
-    <div class="products-container">
-        <div th:each="product : ${products}" class="product-card">
-            <div class="product-image-wrapper">
-                <img th:src="@{${product.photosImagePath}}" class="product-image"  alt="product image"/>
-            </div>
+    <div class="main">
+        <div class="limiter">
 
-            <div class="product-meta-data">
-                <div th:text="${product.name}" class="product-name"></div>
+            <h2>All Categories</h2>
+            <div class="auto">
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
 
-                <div class="product-price">
-                    <span class="word-price">Price:</span>
-                    <span th:text="${product.price}"></span>
-                    <span class="word-usd">$</span>
+                        <div th:each="category : ${categories}" class="swiper-slide">
+                            <a class="category-image-wrapper" th:href="@{/categories/{categoryId}(categoryId=${category.id})}">
+                                <img th:src="@{${category.photosImagePath}}" class="category-image"  alt="category image"/>
+                            </a>
+
+                            <a th:text="${category.name}"
+                               class="category-name"
+                               th:href="@{/categories/{categoryId}(categoryId=${category.id})}"
+                            ></a>
+
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
                 </div>
             </div>
 
-            <a th:href="@{/products/{productId}(productId=${product.id})}" class="view-details-button">
-                View Details
-            </a>
+
+            <h2>All Products</h2>
+            <div class="products-container">
+                <div th:each="product : ${products}" class="product-card">
+                    <div class="product-image-wrapper">
+                        <img th:src="@{${product.photosImagePath}}" class="product-image"  alt="product image"/>
+                    </div>
+
+                    <div class="product-meta-data">
+                        <div th:text="${product.name}" class="product-name"></div>
+
+                        <div class="product-price">
+                            <span class="word-price">Price:</span>
+                            <span th:text="${product.price}"></span>
+                            <span class="word-usd">$</span>
+                        </div>
+                    </div>
+
+                    <a th:href="@{/products/{productId}(productId=${product.id})}" class="view-details-button">
+                        View Details
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 
+
     <div th:replace="fragments/footer"></div>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+
+            slidesPerView: 4,
+            loop: true,
+            speed: 4000,
+            autoplay: {
+                delay: 1,
+                disableOnInteraction: false
+            },
+            centeredSlides: true,
+            spaceBetween: 30,
+            grabCursor: true,
+            // pagination: {
+            //     el: ".swiper-pagination",
+            //     clickable: true
+            // }
+        });
+    </script>
 </body>
 
 </html>

@@ -42,7 +42,7 @@ public class Product {
     public String getPhotosImagePath() {
         if (image == null) return null;
 
-        return "/user-photos/" + id + "/" + image;
+        return "/system-images/products/" + image;
     }
 
     public Product() {
