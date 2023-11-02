@@ -1,0 +1,12 @@
+insert into category (id, name, image)
+VALUES
+(1, 'Bikes','bikes.jpg'),
+(2, 'Computers & Office','computers-office.jpg'),
+(3, 'headphone','headphone.jpg'),
+(4, 'Kitchen & Dining','kitchen.jpg'),
+(5, 'Phones','phones.jpg'),
+(6, 'School','school.jpg'),
+(7, 'Smart Watch','smart-watch.jpg'),
+(8, 'Sports','sports.jpg'),
+(9, 'TVs','tvs.jpg'),
+(10, 'Video Games','video-games.jpg');

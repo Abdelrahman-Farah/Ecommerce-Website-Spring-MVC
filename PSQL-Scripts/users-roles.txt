@@ -17,12 +17,12 @@ CREATE TABLE custom_user (
   PRIMARY KEY (id)
 );
 
--- password: fun123
+-- password: pass123word
 
 INSERT INTO custom_user (first_name, last_name, email, password, enabled)
-VALUES ('john', '1', 'john@ecommerce.com', '{bcrypt}$2a$04$eFytJDGtjbThXa80FyOOBuFdK2IwjyWefYkMpiBEFlpBwDH.5PM0K', 1),
-       ('mary', '2', 'mary@ecommerce.com', '{bcrypt}$2a$04$eFytJDGtjbThXa80FyOOBuFdK2IwjyWefYkMpiBEFlpBwDH.5PM0K', 1),
-       ('susan', '3', 'susan@ecommerce.com', '{bcrypt}$2a$04$eFytJDGtjbThXa80FyOOBuFdK2IwjyWefYkMpiBEFlpBwDH.5PM0K', 1);
+VALUES ('Admin', '1', 'admin@ecommerce.com', '{bcrypt}$2a$10$u68R2F0xEohu6Txr8Fd14u8PvSzgzdCVuWaEjOd2bIpWnGPhdofpe', 1),
+       ('Abdo', '2', 'abdo@ecommerce.com', '{bcrypt}$2a$10$u68R2F0xEohu6Txr8Fd14u8PvSzgzdCVuWaEjOd2bIpWnGPhdofpe', 1),
+       ('John', '3', 'john@ecommerce.com', '{bcrypt}$2a$10$u68R2F0xEohu6Txr8Fd14u8PvSzgzdCVuWaEjOd2bIpWnGPhdofpe', 1);
 
 --
 --  table 'roles'
