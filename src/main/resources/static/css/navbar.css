@@ -10,13 +10,14 @@ nav {
 
 nav .limiter {
     height: 100%;
-    width: 1300px;
+    width: 1240px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .logo{
+    /*margin-left: 3em;*/
     width: 100px;
     height: 65px;
 }
