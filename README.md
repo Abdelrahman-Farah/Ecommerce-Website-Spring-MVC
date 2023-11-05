@@ -1,6 +1,6 @@
 # E-Commerce-Application
 
-- The E-Commerce Application is built using Java and Spring Boot, with security, scalability, and ease of maintenance. The backend uses Spring Data JPA to interact with a MySQL database, making it easy to manage and store important entities such as users, products, categories, orders, and more. User authentication is handled by Auth0, providing secure and reliable means of REST APIs.
+- The E-Commerce Application is built using Java and Spring MVC, with security, scalability, and ease of maintenance. The backend uses Spring Data JPA to interact with a Postgres database, making it easy to manage and store important entities such as users, products, categories, orders, and more.
  
 ![image](https://github.com/Abdelrahman-Farah/ecommerce/blob/main/readme-assets/homepage.gif)
 
