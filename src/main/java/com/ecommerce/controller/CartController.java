@@ -69,7 +69,7 @@ public class CartController {
     private String deleteCartItem (@RequestParam("cartItemId") int cartItemId){
         // TODO: handle exception if the cartItemId is not found
         // TODO: enter string in PathVariable("cartItemId")
-
+        //use logger here something like log4j instead of System.out.println [abdelkarim]
         System.out.println("cartItemId"+ cartItemId);
         cartService.deleteItemById(cartItemId);
         return "redirect:/cart/";

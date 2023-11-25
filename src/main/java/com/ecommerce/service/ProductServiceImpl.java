@@ -24,6 +24,7 @@ public class ProductServiceImpl implements ProductService{
         if (product.isPresent())
             return product.get();
         else
+            //create your owen business exception don't use the general RuntimeException [abdelkarim]
             throw new RuntimeException("Did not find product id - " + productId);
     }
 

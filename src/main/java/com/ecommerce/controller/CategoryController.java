@@ -70,14 +70,17 @@ public class CategoryController {
             BindingResult theBindingResult,
             @RequestParam("file") MultipartFile multipartFile,
             Model theModel
+            //always try to catch the exceptions don't use throws IOException  at the controller level [abdelkarim]
     ) throws IOException {
         if (theBindingResult.hasErrors()) {
             return "category/category-form";
         }
 
+        //check if multipartFile or not before calling getOriginalFilename() [abdelkarim], also don't write business code here
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
         theCategory.setImage(fileName);
 
+        //don't define useless variable [abdelkarim]
         Category savedCategory = categoryService.save(theCategory);
 
         String uploadDir = "system-images/categories";

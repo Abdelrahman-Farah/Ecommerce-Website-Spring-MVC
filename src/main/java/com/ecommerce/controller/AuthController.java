@@ -21,6 +21,7 @@ import java.util.List;
 public class AuthController {
 
     // TODO: init binder
+    //make the field final [abdelkarim]
     private UserService userService;
 
     @Autowired
@@ -40,6 +41,7 @@ public class AuthController {
     }
 
     @PostMapping("/processRegistrationForm")
+    //use DTOs instead of the entities [abdelkarim]
     public String processRegistration(
             @Valid @ModelAttribute("user") User theUser,
             BindingResult theBindingResult,
@@ -51,6 +53,7 @@ public class AuthController {
             return "auth/registration-page";
         }
 
+        //No need to write any logic into th controller layer [abdelkarim]
         String email = theUser.getEmail();
         User temp = userService.findUserByEmail(email);
         if (temp != null){

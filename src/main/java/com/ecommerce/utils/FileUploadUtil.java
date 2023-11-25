@@ -20,6 +20,8 @@ public class FileUploadUtil {
             System.out.println(fileName+filePath);
             Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException ioe) {
+            //throw defined business exception if you want to throw IOException try to catch it in the above layer and then throw your own exception [abdelkarim]
+            //use logger to log the exception very useful for tracing on the production env to know the issue
             throw new IOException("Could not save image file: " + fileName, ioe);
         }
     }

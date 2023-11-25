@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 public class CartServiceImpl implements CartService{
 
 //    private CartRepository cartRepository;
+//make the field final [abdelkarim]
     private CartItemRepository cartItemRepository;
 
     @Autowired

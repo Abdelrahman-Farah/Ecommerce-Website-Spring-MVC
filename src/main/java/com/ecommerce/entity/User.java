@@ -14,6 +14,7 @@ public class User {
     @Column(name = "id")
     private int id;
 
+    // we need to create message.properties file and set the messages inside it  [abdelkarim]
     @NotNull(message="this field is required")
     @Size(min=1, message="this field is required")
     @Column(name = "first_name")
