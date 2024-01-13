@@ -1,18 +1,15 @@
--- how chad's code is bad?
--- his code stores the password in 80, it MUST be char(68) or varchar()
--- his password values has no '{bcrypt}' prefix
 --
 --  table 'custom_user'
 --
 
-DROP TABLE IF EXISTS custom_user;
+DROP TABLE IF EXISTS custom_user CASCADE;
 
 CREATE TABLE custom_user (
   id int NOT NULL GENERATED ALWAYS AS IDENTITY,
   first_name varchar(50) NOT NULL,
   last_name varchar(50) NOT NULL,
   email varchar(128) NOT NULL unique,
-  password char(68) NOT NULL,
+  password char(60) NOT NULL,
   enabled smallint NOT NULL,
   PRIMARY KEY (id)
 );
@@ -20,15 +17,15 @@ CREATE TABLE custom_user (
 -- password: pass123word
 
 INSERT INTO custom_user (first_name, last_name, email, password, enabled)
-VALUES ('Admin', '1', 'admin@ecommerce.com', '{bcrypt}$2a$10$u68R2F0xEohu6Txr8Fd14u8PvSzgzdCVuWaEjOd2bIpWnGPhdofpe', 1),
-       ('Abdo', '2', 'abdo@ecommerce.com', '{bcrypt}$2a$10$u68R2F0xEohu6Txr8Fd14u8PvSzgzdCVuWaEjOd2bIpWnGPhdofpe', 1),
-       ('John', '3', 'john@ecommerce.com', '{bcrypt}$2a$10$u68R2F0xEohu6Txr8Fd14u8PvSzgzdCVuWaEjOd2bIpWnGPhdofpe', 1);
+VALUES ('Admin', '1', 'admin@ecommerce.com', '$2a$10$u68R2F0xEohu6Txr8Fd14u8PvSzgzdCVuWaEjOd2bIpWnGPhdofpe', 1),
+       ('Abdo', '2', 'abdo@ecommerce.com', '$2a$10$u68R2F0xEohu6Txr8Fd14u8PvSzgzdCVuWaEjOd2bIpWnGPhdofpe', 1),
+       ('John', '3', 'john@ecommerce.com', '$2a$10$u68R2F0xEohu6Txr8Fd14u8PvSzgzdCVuWaEjOd2bIpWnGPhdofpe', 1);
 
 --
 --  table 'roles'
 --
 
-DROP TABLE IF EXISTS role;
+DROP TABLE IF EXISTS role CASCADE;
 
 CREATE TABLE role (
   id int NOT NULL GENERATED ALWAYS AS IDENTITY,
@@ -45,7 +42,7 @@ VALUES
 --  table 'users_roles'
 --
 
-DROP TABLE IF EXISTS users_roles;
+DROP TABLE IF EXISTS users_roles CASCADE;
 
 CREATE TABLE users_roles (
   user_id int NOT NULL,
